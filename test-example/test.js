@@ -1,15 +1,29 @@
-const assert = require("assert")
-const testArray = ['a', 'b', 'c'];
-const testString = 'a,b,c';
+const assert = require("chai").assert;
+let expected, current;
 
-describe('String#split', () => { 
-    it('should return an array', () => {
-        assert(Array.isArray('a,b,c'.split(',')));
-    });
-    it('should return the same array', () => {
-        assert.equal(testArray.length, testString.split(',').length, `array have equal length`);
-        for(let i = 0; i < testArray.length; i++) {
-            assert.equal(testArray[i], testString.split(',')[i], `i element is equal`);
-        }
-    });
- })
+beforeEach(() => {
+  expected = ["a", "b", "c"];
+});
+
+describe("String#split", () => {
+  beforeEach(() => {
+    current = "a,b,c".split(',');
+  });
+  it("should return an array", () => {
+    assert(Array.isArray(current));
+  });
+  it("should return the same array", () => {
+    assert.equal(
+      expected.length,
+      current.length,
+      `array have equal length`
+    );
+    for (let i = 0; i < expected.length; i++) {
+      assert.equal(
+        expected[i],
+        current[i],
+        `i element is equal`
+      );
+    }
+  });
+});
