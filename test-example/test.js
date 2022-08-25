@@ -1,4 +1,5 @@
 const assert = require("chai").assert;
+const expect = require('chai').expect;
 let expected, current;
 
 beforeEach(() => {
@@ -10,20 +11,13 @@ describe("String#split", () => {
     current = "a,b,c".split(',');
   });
   it("should return an array", () => {
-    assert(Array.isArray(current));
+    expect(Array.isArray(current)).to.be.true;
   });
   it("should return the same array", () => {
-    assert.equal(
-      expected.length,
-      current.length,
-      `array have equal length`
-    );
+    expect(expected.length).to.equal(current.length);
+
     for (let i = 0; i < expected.length; i++) {
-      assert.equal(
-        expected[i],
-        current[i],
-        `i element is equal`
-      );
+      expect(expected[i]).equal(current[i]);
     }
   });
 });
